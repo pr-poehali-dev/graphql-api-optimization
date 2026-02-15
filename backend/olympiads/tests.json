@@ -1,0 +1,34 @@
+{
+  "tests": [
+    {
+      "name": "List olympiads",
+      "method": "GET",
+      "path": "/?action=list",
+      "expectedStatus": 200,
+      "expectedBody": {"olympiads": "array"},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Create olympiad unauthorized",
+      "method": "POST",
+      "path": "/?action=create",
+      "body": {
+        "title": "Тест",
+        "subject": "Математика",
+        "level": "school",
+        "event_date": "2025-03-01"
+      },
+      "expectedStatus": 403,
+      "expectedBody": {"error": "string"},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Get stats unauthorized",
+      "method": "GET",
+      "path": "/?action=stats",
+      "expectedStatus": 401,
+      "expectedBody": {"error": "string"},
+      "bodyMatcher": "partial"
+    }
+  ]
+}
